@@ -1,0 +1,16 @@
+.heading
+{
+    width: 300;
+    height: 40;
+    border-radius: 20px;
+}
+.heading_special
+{
+    width: 100%;
+    
+}
+.bg
+{
+    background-color: rgb(9, 29, 82);
+    color: white;
+}
