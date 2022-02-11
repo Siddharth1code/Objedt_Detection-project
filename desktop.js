@@ -1,6 +1,6 @@
 function back()
 {
-    window.location="starting.html";
+    window.location="index.html";
 }
 
 img="";

@@ -7,10 +7,22 @@
 .heading_special
 {
     width: 100%;
+    font-weight: bold;
+    font-size: 30px;
     
 }
 .bg
 {
     background-color: rgb(9, 29, 82);
     color: white;
+    font-size: 20px;
+    margin-top:20px;
+}
+.fd
+{
+    margin-top: 298px;
+    width: 100%;
+    padding-bottom: 10px;
+    font-size: 15px;
+
 }
