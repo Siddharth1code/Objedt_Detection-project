@@ -4,7 +4,8 @@ function back()
 }
 
 img="";
-Status="";
+status="";
+object=[];
 function preload()
 {
     img=loadImage('fruits.jpg');
@@ -13,38 +14,44 @@ function setup()
 {
     canvas = createCanvas(640,420);
     canvas.center();
-    objectDetectors =ml5.objectDetector('cocossed',modelLoaded);
+    objectDetector =ml5.objectDetector('cocossd',modelLoaded);
     document.getElementById("status").innerHTML= "Status: object Detecting";
 }
-function draw() 
-{
-    image(img,0,0,640,420);
-    fill("red");
-    text("fruit basket",45,105);
-    noFill();
-    stroke("black");
-    rect(30,60,550,450);
 
-    fill("red");
-    text("pineapple",180,70);
-    noFill();
-    stroke("black");
-    rect(180,60,150,200)
-    
-}
 function modelLoaded()
 {
     console.log("model loaded");
-    Status=true;
-    objectDetectors.detect(img,gotResults);
+    status=true;
+    objectDetector.detect(img,gotResults);
 }
 
-function gotResults()
+function gotResults(error,results)
 {
     if(error)
     {
         console.log("error");
-    }l
-    console.log("results");
+    }
+    console.log(results);
+    object=results;
 }
 
+function draw() 
+{
+    image(img,0,0,640,420);
+
+    if(status!="")
+{
+    for(i=0;i<object.length;i++)
+    {
+        document.getElementById("status").innerHTML="Status: Object detected";
+
+        fill("red");
+        peresent=floor(object[i].confidence*100);
+        text(object[i].label+" "+peresent+" % ",object[i].x+ 15, object[i].y + 15);
+        noFill();
+        stroke("black");
+        rect(object[i].x ,object[i].y , object[i].width ,object[i].height);
+    
+    }
+}
+}
